@@ -38,6 +38,9 @@ import upv.ipc.sportlib.SportActivityApp;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+=======
+import mapademo.User;
+
 /**
  * FXML Controller class
  *
@@ -81,12 +84,131 @@ public class RegisterController implements Initializable {
   /**
    * Initializes the controller class.
    */
+  =======
+  @FXML
+  private TextField emailField;
+  @FXML
+  private Label emailError;
+  @FXML
+  private TextField phoneField;
+  @FXML
+  private PasswordField passwordField;
+  @FXML
+  private Label passwordError;
+  @FXML
+  private PasswordField confirmPasswordField;
+  @FXML
+  private Label confirmError;
+  @FXML
+  private DatePicker birthdateField;
+  @FXML
+  private ImageView imageView;
+  @FXML
+  private Button buttonSelectAvatar;
+  @FXML
+  private Button registerButton;
+  @FXML
+  private Button cancelButton;
+  @FXML
+  private Label phoneError;
+  @FXML
+  private Label birthdateError;
+  @FXML
+  private TextField nickname;
+
+  /**
+   * Initializes the controller class.
+   */
 
   private BooleanProperty validEmail;
   private BooleanProperty validPassword;
   private BooleanProperty validConfirm;
   private BooleanProperty validDate;
 
+  private ChangeListener<String> emailListener;
+  private ChangeListener<String> paswordListener;
+  private ChangeListener<String> confirmListener;
+
+  private String avatarPath = "";
+
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+    validEmail = new SimpleBooleanProperty();
+    validPassword = new SimpleBooleanProperty();
+    validConfirm = new SimpleBooleanProperty();
+    validDate = new SimpleBooleanProperty();
+
+    emailField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+      if (!newValue) { // focus lost
+        checkEmail();
+        if (!validEmail.get()) {
+          if (emailListener == null) {
+            emailListener = (a, b, c) -> checkEmail();
+            emailField.textProperty().addListener(emailListener);
+          }
+        }
+      }
+    });
+    passwordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+      if (!newValue) { // focus lost
+        checkPassword();
+        if (!validPassword.get()) {
+          if (paswordListener == null) {
+            paswordListener = (a, b, c) -> checkPassword();
+            passwordField.textProperty().addListener(paswordListener);
+          }
+        }
+      }
+    });
+
+    confirmPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+      if (!newValue) { // focus lost
+        checkPasswordsMatch();
+        if (!validConfirm.get()) {
+          if (confirmListener == null) {
+            confirmListener = (a, b, c) -> checkPasswordsMatch();
+            confirmPasswordField.textProperty().addListener(confirmListener);
+          }
+        }
+      }
+    });
+    BooleanBinding validFields = Bindings.and(validEmail, validPassword)
+        .and(validConfirm);
+
+    registerButton.disableProperty().bind(
+        Bindings.not(validFields));
+    cancelButton.setOnAction((event) -> {
+      cancelButton.getScene().getWindow().hide();
+    });
+
+    LocalDateStringConverter localDateStringConvert = new LocalDateStringConverter() {
+      @Override
+      public LocalDate fromString(String value) {
+        try {
+          return super.fromString(value);
+        } catch (Exception e) {
+          System.out.println("Exception in fromString");
+          return LocalDate.now();
+        }
+      }
+
+      @Override
+      public String toString(LocalDate value) {
+        return super.toString(value);
+      }
+    };
+    birthdateField.setConverter(localDateStringConvert);
+  }>>>>>>>
+
+  e025d1e (Added the user and the creation of one each time you enter the regster)
+
+  private BooleanProperty validEmail;
+  private BooleanProperty validPassword;
+  private BooleanProperty validConfirm;
+  private BooleanProperty validDate;
+
+  <<<<<<<HEAD
   private ChangeListener<String> emailListener;
   private ChangeListener<String> paswordListener;
   private ChangeListener<String> confirmListener;
