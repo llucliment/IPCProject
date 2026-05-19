@@ -9,7 +9,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -18,86 +17,21 @@ import java.util.HashMap;
  *
  * @author jose
  */
-<<<<<<< HEAD
-public class MapaDemoApp extends Application {
-  public static Scene scene;
-
-  public static HashMap<String, Parent> router = new HashMap<String, Parent>();
-
-  public static void setRoot(Parent root) {
-
-    scene.setRoot(root);
-  }
-
-  public static void setRoot(String key) {
-    Parent root = router.get(key);
-    if (root != null) {
-      scene.setRoot(root);
-    } else {
-      System.out.printf("Requested root does not exist.");
-    }
-  }
-
-  @Override
-  public void start(Stage stage) throws Exception {
-    Parent root;
-
-    FXMLLoader loader;
-
-    loader = new FXMLLoader(getClass().getResource("../view/Register.fxml"));
-    root = loader.load();
-    router.put("Register", root);
-
-    loader = new FXMLLoader(getClass().getResource("../view/Dashboard.fxml"));
-    root = loader.load();
-    router.put("Dashboard", root);
-
-    loader = new FXMLLoader(getClass().getResource("../view/Activities.fxml"));
-    root = loader.load();
-    router.put("Activities", root);
-
-    loader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
-    root = loader.load();
-    router.put("Login", root);
-
-    loader = new FXMLLoader(getClass().getResource("../view/Maps.fxml"));
-    root = loader.load();
-    router.put("Maps", root);
-
-    scene = new Scene(router.get("Login"), 800, 600);
-
-    // 3. Attach scene to stage and configure
-    stage.setTitle("ProyectoIPC");
-    stage.setScene(scene);
-
-    // 4. Display the window
-    stage.show();
-
-  }
-
-  /**
-   * @param args the command line arguments
-   */
-  public static void main(String[] args) {
-    launch(args);
-  }
-
-=======
 public class MapaDemoApp extends Application {
     public static Scene scene;
 
     public static HashMap<String, Parent> router = new HashMap<String, Parent>();
 
-    public static void setRoot(Parent root){
+    public static void setRoot(Parent root) {
 
         scene.setRoot(root);
     }
 
-    public static void setRoot(String key){
+    public static void setRoot(String key) {
         Parent root = router.get(key);
-        if(root != null){
+        if (root != null) {
             scene.setRoot(root);
-        } else{
+        } else {
             System.out.printf("Requested root does not exist.");
         }
     }
@@ -108,19 +42,19 @@ public class MapaDemoApp extends Application {
 
         FXMLLoader loader;
 
-        //loader = new FXMLLoader(getClass().getResource("../view/Register.fxml"));
-        //root = loader.load();
-        //router.put("Register", root);
+        loader = new FXMLLoader(getClass().getResource("../view/Register.fxml"));
+        root = loader.load();
+        router.put("Register", root);
 
-        //loader = new FXMLLoader(getClass().getResource("../view/Dashboard.fxml"));
-        //root = loader.load();
-        //router.put("Dashboard", root);
+        loader = new FXMLLoader(getClass().getResource("../view/Dashboard.fxml"));
+        root = loader.load();
+        router.put("Dashboard", root);
 
-        //loader = new FXMLLoader(getClass().getResource("../view/Activities.fxml"));
-        //root = loader.load();
-        //router.put("Activities", root);
+        loader = new FXMLLoader(getClass().getResource("../view/Activities.fxml"));
+        root = loader.load();
+        router.put("Activities", root);
 
-        loader = new FXMLLoader(getClass().getResource("../views/Login.fxml"));
+        loader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
         root = loader.load();
         router.put("Login", root);
 
@@ -128,10 +62,7 @@ public class MapaDemoApp extends Application {
         //root = loader.load();
         //router.put("Maps", root);
 
-
-
         scene = new Scene(router.get("Login"), 800, 600);
-
 
         // 3. Attach scene to stage and configure
         stage.setTitle("ProyectoIPC");
@@ -140,10 +71,7 @@ public class MapaDemoApp extends Application {
         // 4. Display the window
         stage.show();
 
-
-
     }
-
 
     /**
      * @param args the command line arguments
@@ -151,6 +79,5 @@ public class MapaDemoApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
->>>>>>> a531fcb (feat(login): implemented login logic)
+
 }
