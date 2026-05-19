@@ -24,126 +24,126 @@ import mapademo.MapaDemoApp;
  */
 public class DashboardController implements Initializable {
 
-    @FXML
-    private Circle avatarCircle;
-    @FXML
-    private Label labelName;
-    @FXML
-    private Label labelSurname;
-    @FXML
-    private Button btnProfile;
-    @FXML
-    private Button btnActivities;
-    @FXML
-    private Button btnMaps;
-    @FXML
-    private Button btnDashboard;
-    @FXML
-    private Button btnLogout;
-    @FXML
-    private Button btnAddAnnotations;
-    @FXML
-    private Button btnSelectMap;
-    @FXML
-    private ScrollPane mapScrollPane;
-    @FXML
-    private Label lblDuration;
-    @FXML
-    private Label lblDistance;
-    @FXML
-    private Label lblAvgPace;
-    @FXML
-    private Label lblAvgSpeed;
-    @FXML
-    private Label lblMaxAltitude;
-    @FXML
-    private Label lblMinAltitude;
-    @FXML
-    private Label lblMaxElevation;
-    @FXML
-    private Label lblMinElevation;
-    @FXML
-    private Button btnSpeedRoute;
-    @FXML
-    private Button btnElevationProfile;
-    @FXML
-    private Canvas elevationCanvas;
+  @FXML
+  private Circle avatarCircle;
+  @FXML
+  private Label labelName;
+  @FXML
+  private Label labelSurname;
+  @FXML
+  private Button btnProfile;
+  @FXML
+  private Button btnActivities;
+  @FXML
+  private Button btnMaps;
+  @FXML
+  private Button btnDashboard;
+  @FXML
+  private Button btnLogout;
+  @FXML
+  private Button btnAddAnnotations;
+  @FXML
+  private Button btnSelectMap;
+  @FXML
+  private ScrollPane mapScrollPane;
+  @FXML
+  private Label lblDuration;
+  @FXML
+  private Label lblDistance;
+  @FXML
+  private Label lblAvgPace;
+  @FXML
+  private Label lblAvgSpeed;
+  @FXML
+  private Label lblMaxAltitude;
+  @FXML
+  private Label lblMinAltitude;
+  @FXML
+  private Label lblMaxElevation;
+  @FXML
+  private Label lblMinElevation;
+  @FXML
+  private Button btnSpeedRoute;
+  @FXML
+  private Button btnElevationProfile;
+  @FXML
+  private Canvas elevationCanvas;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+  }
 
-    @FXML
-    private void profileClick(MouseEvent event) {
-    }
+  @FXML
+  private void profileClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleProfile(ActionEvent event) {
-    }
+  @FXML
+  private void handleProfile(ActionEvent event) {
+  }
 
-    @FXML
-    private void activitiesClick(MouseEvent event) {
-    }
+  @FXML
+  private void activitiesClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleActivities(ActionEvent event) {
-        MapaDemoApp.setRoot("Activities");
-    }
+  @FXML
+  private void handleActivities(ActionEvent event) {
+    MapaDemoApp.setRoot("Activities");
+  }
 
-    @FXML
-    private void mapClick(MouseEvent event) {
-    }
+  @FXML
+  private void mapClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleMaps(ActionEvent event) {
-    }
+  @FXML
+  private void handleMaps(ActionEvent event) {
+  }
 
-    @FXML
-    private void handleDashboard(ActionEvent event) {
-    }
+  @FXML
+  private void handleDashboard(ActionEvent event) {
+  }
 
-    @FXML
-    private void logOutClick(MouseEvent event) {
-    }
+  @FXML
+  private void logOutClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleLogOut(ActionEvent event) {
-    }
+  @FXML
+  private void handleLogOut(ActionEvent event) {
+  }
 
-    @FXML
-    private void addAnnotationsClick(MouseEvent event) {
-    }
+  @FXML
+  private void addAnnotationsClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void diagAddAnnotations(ActionEvent event) {
-    }
+  @FXML
+  private void diagAddAnnotations(ActionEvent event) {
+  }
 
-    @FXML
-    private void selectMapClick(MouseEvent event) {
-    }
+  @FXML
+  private void selectMapClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleSelectMap(ActionEvent event) {
-    }
+  @FXML
+  private void handleSelectMap(ActionEvent event) {
+  }
 
-    @FXML
-    private void speedOverRouteClick(MouseEvent event) {
-    }
+  @FXML
+  private void speedOverRouteClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleSpeedOverRoute(ActionEvent event) {
-    }
+  @FXML
+  private void handleSpeedOverRoute(ActionEvent event) {
+  }
 
-    @FXML
-    private void elevationProfileClick(MouseEvent event) {
-    }
+  @FXML
+  private void elevationProfileClick(MouseEvent event) {
+  }
 
-    @FXML
-    private void handleElevationProfile(ActionEvent event) {
-    }
-    
+  @FXML
+  private void handleElevationProfile(ActionEvent event) {
+  }
+
 }
