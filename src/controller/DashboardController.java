@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import mapademo.MapaDemoApp;
 import upv.ipc.sportlib.User;
 
 /**
@@ -91,6 +92,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void handleActivities(ActionEvent event) {
+        MapaDemoApp.setRoot("Activities");
     }
 
     @FXML
@@ -111,6 +113,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void handleLogOut(ActionEvent event) {
+        MapaDemoApp.setRoot("Login");
     }
 
     @FXML

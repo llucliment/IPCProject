@@ -83,8 +83,8 @@ public class RegisterController implements Initializable {
     private Label nicknameError;
     @FXML
     private Label birthdateError;
-    
-    
+
+
     private BooleanProperty validNickname;
     private BooleanProperty validEmail;
     private BooleanProperty validPassword;
@@ -99,10 +99,10 @@ public class RegisterController implements Initializable {
     private String avatarPath ="";
 
     private final SportActivityApp app = SportActivityApp.getInstance();
-    
-    
- 
-    
+
+
+
+
     /**
      * Initializes the controller class.
      */
@@ -114,8 +114,8 @@ public class RegisterController implements Initializable {
         validPassword = new SimpleBooleanProperty(false);
         validConfirm = new SimpleBooleanProperty(false);
         validDate = new SimpleBooleanProperty(false);
-        
-        /*nickname.fontProperty().addListener((obv,oldValue, newValue)->{
+
+        nickname.focusedProperty().addListener((obv,oldValue, newValue)->{
             if(!newValue){
                 checkNickname();
                 if(!validNickname.get() && nicknameListener == null){
@@ -123,7 +123,7 @@ public class RegisterController implements Initializable {
                     nickname.textProperty().addListener(nicknameListener);
                 }
             }
-        });*/
+        });
         emailField.focusedProperty().addListener((obv,oldValue, newValue)->{
             if(!newValue){
                 checkEmail();
@@ -136,7 +136,7 @@ public class RegisterController implements Initializable {
         passwordField.focusedProperty().addListener((obv,oldValue, newValue)->{
             if(!newValue){
                 checkPassword();
-                if(!validEmail.get() && passwordListener == null){
+                if(!validPassword.get() && passwordListener == null){
                     passwordListener = (a,b,c)-> checkPassword();
                     passwordField.textProperty().addListener(passwordListener);
                 }
@@ -145,7 +145,7 @@ public class RegisterController implements Initializable {
         confirmPasswordField.focusedProperty().addListener((obv,oldValue, newValue)->{
             if(!newValue){
                 checkConfirm();
-                if(!validEmail.get() && confirmListener == null){
+                if(!validConfirm.get() && confirmListener == null){
                     confirmListener = (a,b,c)-> checkConfirm();
                     confirmPasswordField.textProperty().addListener(confirmListener);
                 }
@@ -155,17 +155,17 @@ public class RegisterController implements Initializable {
             if(!newValue){ checkDate();}
         });
         birthdateField.valueProperty().addListener((observable, oldVal, newVal)->checkDate());
-        
-        BooleanBinding validFields = Bindings.and(validNickname, validDate)
+
+        BooleanBinding validFields = Bindings.and(validNickname, validEmail)
                 .and(validPassword)
                 .and(validConfirm)
                 .and(validDate);
         registerButton.disableProperty().bind(Bindings.not(validFields));
-        
+
         cancelButton.setOnAction((event)->{
             cancelButton.getScene().getWindow().hide();
         });
-        
+
         LocalDateStringConverter localDateStringConvert = new LocalDateStringConverter(){
             @Override
             public LocalDate fromString(String value){
@@ -178,12 +178,16 @@ public class RegisterController implements Initializable {
             }
             @Override
             public String toString(LocalDate value){
-              return super.toString(value);
+                return super.toString(value);
             }
         };
         birthdateField.setConverter(localDateStringConvert);
-       Circle clip = new Circle(50,50,50);
-       imageView.setClip(clip);
+
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(100);
+        imageView.setPreserveRatio(false);
+        Circle clip = new Circle(50,50,50);
+        imageView.setClip(clip);
     }
 
     public void checkNickname(){
@@ -207,7 +211,7 @@ public class RegisterController implements Initializable {
         validConfirm.set(same);
         showError(same, confirmPasswordField, confirmError);
     }
-    
+
     public void checkDate(){
         LocalDate value = birthdateField.getValue();
         if(value == null){
@@ -224,32 +228,34 @@ public class RegisterController implements Initializable {
     private void selectAvatar(ActionEvent event) {
         FileChooser chosen = new FileChooser();
         chosen.setTitle("Select Avatar");
-        chosen.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", ".png",".jpg",".jpeg"));
+        chosen.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images","*.png","*.jpg","*.jpeg"));
         Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         File file = chosen.showOpenDialog(stage);
         if(file != null){
             avatarPath = file.getAbsolutePath();
             imageView.setImage(new Image(file.toURI().toString()));
+            Circle newClip = new Circle(50,50,50);
+            imageView.setClip(newClip);
         }
     }
 
     @FXML
     private void register(ActionEvent event) {
         boolean ok = app.registerUser(nickname.getText().trim(), emailField.getText().trim(), passwordField.getText(), birthdateField.getValue(), avatarPath);
-        
+
         nickname.clear();
         emailField.clear();
         passwordField.clear();
         confirmPasswordField.clear();
         birthdateField.setValue(null);
         avatarPath = "";
-        
+
         validNickname.setValue(Boolean.FALSE);
         validEmail.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
         validConfirm.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
-        
+
         if(ok){
             goToDashhboard(event);
         }else{
@@ -262,7 +268,7 @@ public class RegisterController implements Initializable {
     private void cancel(ActionEvent event) {
         cancelButton.getScene().getWindow().hide();
     }
-    
+
     private void goToDashhboard(ActionEvent event){
         MapaDemoApp.setRoot("Dashboard");
     }
@@ -270,5 +276,5 @@ public class RegisterController implements Initializable {
         errorMessage.setVisible(!isValid);
         field.setStyle(((isValid) ? "" : "-fx-background-color: #FCE5E0"));
     }
-    
+
 }
