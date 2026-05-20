@@ -6,6 +6,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.sun.jdi.connect.spi.TransportService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +32,9 @@ import java.io.File;
 import javafx. scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.util.converter.LocalDateStringConverter;
+import mapademo.MapaDemoApp;
+import upv.ipc.sportlib.SportActivityApp;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 /**
@@ -84,12 +89,16 @@ public class RegisterController implements Initializable {
     private ChangeListener<String> emailListener;
     private ChangeListener<String> paswordListener;
     private ChangeListener<String> confirmListener;
+
+    private SportActivityApp sportsApp;
    
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        sportsApp = SportActivityApp.getInstance();
+
         validEmail = new SimpleBooleanProperty();
         validPassword = new SimpleBooleanProperty();
         validConfirm = new SimpleBooleanProperty();
@@ -165,6 +174,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void register(ActionEvent event) {
+
         emailField.clear();
         passwordField.clear();
         confirmPasswordField.clear();
@@ -173,16 +183,8 @@ public class RegisterController implements Initializable {
         validPassword.setValue(Boolean.FALSE);
         validConfirm.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
-        
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
-            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene (root);
-            stage.setScene(scene);
-            stage.show();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+
+        MapaDemoApp.setRoot("Login");
     }
 
     @FXML
